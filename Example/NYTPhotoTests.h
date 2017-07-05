@@ -1,5 +1,6 @@
 
 #import <Foundation/Foundation.h>
+#import "NYTExamplePhoto.h"
 
 typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     NYTViewControllerPhotoIndexCustomEverything = 1,
@@ -12,5 +13,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
 };
 
 @interface NYTPhotoTests : NSObject
+
++ (NSArray<NYTExamplePhoto *> *)newTestPhotos;
 
 @end
