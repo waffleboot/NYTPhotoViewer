@@ -95,6 +95,7 @@
 		11FBDAFD1C877D9A00018169 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FBDAFB1C877D9A00018169 /* LaunchScreen.xib */; };
 		11FBDAFE1C877F5500018169 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 111084781C876A2B00699670 /* Assets.xcassets */; };
 		11FBDAFF1C877F8000018169 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 111084851C876B0400699670 /* giphy.gif */; };
+		F58D1A111F0D93AB00821FF6 /* NYTPhotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F58D1A101F0D93AB00821FF6 /* NYTPhotoTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +289,8 @@
 		11FBDAEE1C877C5D00018169 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
 		11FBDAF01C877C8B00018169 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		11FBDAFC1C877D9A00018169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F58D1A0F1F0D93AB00821FF6 /* NYTPhotoTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoTests.h; sourceTree = "<group>"; };
+		F58D1A101F0D93AB00821FF6 /* NYTPhotoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTPhotoTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +432,8 @@
 		1110846B1C876A2B00699670 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				F58D1A0F1F0D93AB00821FF6 /* NYTPhotoTests.h */,
+				F58D1A101F0D93AB00821FF6 /* NYTPhotoTests.m */,
 				1110848F1C876CE000699670 /* NYTAppDelegate.h */,
 				111084901C876CE000699670 /* NYTAppDelegate.m */,
 				111084921C876D1900699670 /* NYTViewController.h */,
@@ -844,6 +849,7 @@
 				111084911C876CE000699670 /* NYTAppDelegate.m in Sources */,
 				111084831C876AA500699670 /* NYTExamplePhoto.m in Sources */,
 				1110846E1C876A2B00699670 /* main.m in Sources */,
+				F58D1A111F0D93AB00821FF6 /* NYTPhotoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

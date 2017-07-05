@@ -9,16 +9,7 @@
 #import "NYTViewController.h"
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import "NYTExamplePhoto.h"
-
-typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
-    NYTViewControllerPhotoIndexCustomEverything = 1,
-    NYTViewControllerPhotoIndexLongCaption = 2,
-    NYTViewControllerPhotoIndexDefaultLoadingSpinner = 3,
-    NYTViewControllerPhotoIndexNoReferenceView = 4,
-    NYTViewControllerPhotoIndexCustomMaxZoomScale = 5,
-    NYTViewControllerPhotoIndexGif = 6,
-    NYTViewControllerPhotoCount,
-};
+#import "NYTPhotoTests.h"
 
 @interface NYTViewController () <NYTPhotosViewControllerDelegate>
 
@@ -30,6 +21,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
 @implementation NYTViewController
 
 - (IBAction)imageButtonTapped:(id)sender {
+
     self.photos = [[self class] newTestPhotos];
     
     NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:self.photos initialPhoto:nil delegate:self];
