@@ -3,8 +3,8 @@
 #import "PhotoObject+Private.h"
 
 @implementation PhotoObjectView
-- (instancetype)initWithImage:(PhotoObject *)image {
-    return [super initWithImage:image.photoImage];
+- (instancetype)initWithPhotoObject:(PhotoObject *)photoObject {
+    return [super initWithImage:photoObject.photoImage];
 }
 - (void)setPhotoObject:(PhotoObject *)photoObject {
     self.image = photoObject.photoImage;

@@ -59,7 +59,7 @@
 
 - (void)setupInternalImageViewWithImage:(PhotoObject *)image {
 
-    self.imageView = [[PhotoObjectView alloc] initWithImage:image];
+    self.imageView = [[PhotoObjectView alloc] initWithPhotoObject:image];
 
     [self updateImage:image];
     

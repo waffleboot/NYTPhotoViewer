@@ -4,5 +4,5 @@
 
 @interface PhotoObjectView : UIImageView
 @property (nonatomic, strong) PhotoObject *photoObject;
-- (instancetype)initWithImage:(PhotoObject *)image;
+- (instancetype)initWithPhotoObject:(PhotoObject *)photoObject;
 @end
