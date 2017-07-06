@@ -16,7 +16,7 @@
 
 NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhotoViewControllerPhotoImageUpdatedNotification";
 
-@interface NYTPhotoViewController () <UIScrollViewDelegate>
+@interface NYTPhotoViewController ()
 
 @property (nonatomic) id <NYTPhoto> photo;
 
@@ -34,8 +34,6 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 #pragma mark - NSObject
 
 - (void)dealloc {
-    _scalingImageView.delegate = nil;
-    
     [_notificationCenter removeObserver:self];
 }
 
@@ -100,8 +98,6 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
         [self setupLoadingView:loadingView];
     }
     
-    _scalingImageView.delegate = self;
-
     _notificationCenter = notificationCenter;
 
     [self setupGestureRecognizers];
@@ -138,51 +134,11 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressWithGestureRecognizer:)];
 }
 
-- (void)didDoubleTapWithGestureRecognizer:(UITapGestureRecognizer *)recognizer {
-    CGPoint pointInView = [recognizer locationInView:self.scalingImageView.imageView];
-    
-    CGFloat newZoomScale = self.scalingImageView.maximumZoomScale;
-
-    if (self.scalingImageView.zoomScale >= self.scalingImageView.maximumZoomScale
-        || ABS(self.scalingImageView.zoomScale - self.scalingImageView.maximumZoomScale) <= 0.01) {
-        newZoomScale = self.scalingImageView.minimumZoomScale;
-    }
-    
-    CGSize scrollViewSize = self.scalingImageView.bounds.size;
-    
-    CGFloat width = scrollViewSize.width / newZoomScale;
-    CGFloat height = scrollViewSize.height / newZoomScale;
-    CGFloat originX = pointInView.x - (width / 2.0);
-    CGFloat originY = pointInView.y - (height / 2.0);
-    
-    CGRect rectToZoomTo = CGRectMake(originX, originY, width, height);
-    
-    [self.scalingImageView zoomToRect:rectToZoomTo animated:YES];
-}
-
 - (void)didLongPressWithGestureRecognizer:(UILongPressGestureRecognizer *)recognizer {
     if ([self.delegate respondsToSelector:@selector(photoViewController:didLongPressWithGestureRecognizer:)]) {
         if (recognizer.state == UIGestureRecognizerStateBegan) {
             [self.delegate photoViewController:self didLongPressWithGestureRecognizer:recognizer];
         }
-    }
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.scalingImageView.imageView;
-}
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
-    scrollView.panGestureRecognizer.enabled = YES;
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    // There is a bug, especially prevalent on iPhone 6 Plus, that causes zooming to render all other gesture recognizers ineffective.
-    // This bug is fixed by disabling the pan gesture recognizer of the scroll view when it is not needed.
-    if (scrollView.zoomScale == scrollView.minimumZoomScale) {
-        scrollView.panGestureRecognizer.enabled = NO;
     }
 }
 

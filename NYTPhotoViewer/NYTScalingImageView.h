@@ -5,7 +5,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NYTScalingImageView : UIScrollView
+@interface NYTScalingImageView : UIView
 
 /**
  *  The image view used internally as the contents of the scroll view.

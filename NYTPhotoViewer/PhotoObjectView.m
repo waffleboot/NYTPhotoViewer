@@ -9,12 +9,10 @@
     if (self) {
         _photoObject = photoObject;
         self.backgroundColor = [UIColor redColor];
-        NSLog(@"%@", photoObject.name);
     }
     return self;
 }
 - (void)setPhotoObject:(PhotoObject *)photoObject {
-    NSLog(@"%@", photoObject.name);
     _photoObject = photoObject;
 }
 @end
