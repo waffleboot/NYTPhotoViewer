@@ -37,11 +37,6 @@ extern NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification;
 @property (nonatomic, readonly, nullable) UIView *loadingView;
 
 /**
- *  The gesture recognizer used to detect the double tap gesture used for zooming on photos.
- */
-@property (nonatomic, readonly) UITapGestureRecognizer *doubleTapGestureRecognizer;
-
-/**
  *  The object that acts as the photo view controller's delegate.
  */
 @property (nonatomic, weak, nullable) id <NYTPhotoViewControllerDelegate> delegate;
