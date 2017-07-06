@@ -1,10 +1,3 @@
-//
-//  NYTViewController.m
-//  ios-photo-viewer
-//
-//  Created by Brian Capps on 02/11/2015.
-//  Copyright (c) 2014 Brian Capps. All rights reserved.
-//
 
 #import "NYTViewController.h"
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
@@ -16,7 +9,6 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     NYTViewControllerPhotoIndexDefaultLoadingSpinner = 3,
     NYTViewControllerPhotoIndexNoReferenceView = 4,
     NYTViewControllerPhotoIndexCustomMaxZoomScale = 5,
-    NYTViewControllerPhotoIndexGif = 6,
     NYTViewControllerPhotoCount,
 };
 
@@ -58,9 +50,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     for (NSUInteger i = 0; i < NYTViewControllerPhotoCount; i++) {
         NYTExamplePhoto *photo = [[NYTExamplePhoto alloc] init];
         
-        if (i == NYTViewControllerPhotoIndexGif) {
-            photo.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"giphy" ofType:@"gif"]];
-        } else if (i == NYTViewControllerPhotoIndexCustomEverything || i == NYTViewControllerPhotoIndexDefaultLoadingSpinner) {
+        if (i == NYTViewControllerPhotoIndexCustomEverything || i == NYTViewControllerPhotoIndexDefaultLoadingSpinner) {
             // no-op, left here for clarity:
             photo.image = nil;
         } else {
@@ -87,9 +77,6 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
                 break;
             case NYTViewControllerPhotoIndexCustomMaxZoomScale:
                 caption = @"photo with custom maximum zoom scale";
-                break;
-            case NYTViewControllerPhotoIndexGif:
-                caption = @"animated GIF";
                 break;
             case NYTViewControllerPhotoCount:
                 // this case statement intentionally left blank.
