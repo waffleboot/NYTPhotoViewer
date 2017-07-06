@@ -39,7 +39,7 @@
 
 #pragma mark - NYTScalingImageView
 
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame {
+- (instancetype)initWithImage:(PhotoObject *)image frame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
     if (self) {
@@ -49,7 +49,7 @@
     return self;
 }
 
-- (void)commonInitWithImage:(UIImage *)image {
+- (void)commonInitWithImage:(PhotoObject *)image {
     [self setupInternalImageViewWithImage:image];
     [self setupImageScrollView];
     [self updateZoomScale];
@@ -57,24 +57,24 @@
 
 #pragma mark - Setup
 
-- (void)setupInternalImageViewWithImage:(UIImage *)image {
+- (void)setupInternalImageViewWithImage:(PhotoObject *)image {
 
-    self.imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView = [[UIImageView alloc] initWithImage:image.photoImage];
 
     [self updateImage:image];
     
     [self addSubview:self.imageView];
 }
 
-- (void)updateImage:(UIImage *)image {
+- (void)updateImage:(PhotoObject *)image {
 
     // Remove any transform currently applied by the scroll view zooming.
     self.imageView.transform = CGAffineTransformIdentity;
-    self.imageView.image = image;
+    self.imageView.image = image.photoImage;
     
-    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    self.imageView.frame = CGRectMake(0, 0, image.photoImage.size.width, image.photoImage.size.height);
     
-    self.contentSize = image.size;
+    self.contentSize = image.photoImage.size;
     
     [self updateZoomScale];
     [self centerScrollViewContents];

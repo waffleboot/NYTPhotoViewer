@@ -95,7 +95,7 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 - (void)commonInitWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     _photo = photo;
     
-    UIImage *photoImage = photo.image ?: photo.placeholderImage;
+    PhotoObject *photoImage = photo.image ?: photo.placeholderImage;
     _scalingImageView = [[NYTScalingImageView alloc] initWithImage:photoImage frame:CGRectZero];
     
     if (!photoImage) {

@@ -1,5 +1,6 @@
 
 @import UIKit;
+#import "PhotoObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,14 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return A fully initialized object.
  */
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithImage:(PhotoObject *)image frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Updates the image in the image view and centers and zooms the new image.
  *
  *  @param image The new image to display in the image view.
  */
-- (void)updateImage:(UIImage *)image;
+- (void)updateImage:(PhotoObject *)image;
 
 /**
  *  Centers the image inside of the scroll view. Typically used after rotation, or when zooming has finished.

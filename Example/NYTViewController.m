@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(updateImageDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (NYTExamplePhoto *photo in photos) {
             if (!photo.image) {
-                photo.image = [PhotoObject imageNamed:@"NYTimesBuilding"];
+                photo.image = [PhotoObject photoNamed:@"NYTimesBuilding"];
                 [photosViewController updateImageForPhoto:photo];
             }
         }
@@ -54,11 +54,11 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
             // no-op, left here for clarity:
             photo.image = nil;
         } else {
-            photo.image = [PhotoObject imageNamed:@"NYTimesBuilding"];
+            photo.image = [PhotoObject photoNamed:@"NYTimesBuilding"];
         }
         
         if (i == NYTViewControllerPhotoIndexCustomEverything) {
-            photo.placeholderImage = [PhotoObject imageNamed:@"NYTimesBuildingPlaceholder"];
+            photo.placeholderImage = [PhotoObject photoNamed:@"NYTimesBuildingPlaceholder"];
         }
 
         NSString *caption = @"summary";

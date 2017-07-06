@@ -1,6 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoObject : UIImage
-+ (instancetype)imageNamed:(NSString *)name;
+@interface PhotoObject : NSObject
+@property (nonatomic, strong, readonly) UIImage *photoImage;
++ (instancetype)photoNamed:(NSString *)name;
 @end
