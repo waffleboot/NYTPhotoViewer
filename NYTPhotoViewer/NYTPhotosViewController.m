@@ -57,7 +57,70 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 
 @implementation NYTPhotosViewController
 
-#pragma mark - NSObject
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    return [self initWithPhotos:nil];
+}
+
+- (instancetype)initWithPhotos:(NSArray *)photos {
+    return [self initWithPhotos:photos initialPhoto:photos.firstObject delegate:nil];
+}
+
+- (instancetype)initWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto {
+    return [self initWithPhotos:photos initialPhoto:initialPhoto delegate:nil];
+}
+
+- (instancetype)initWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto delegate:(id<NYTPhotosViewControllerDelegate>)delegate {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self)
+        [self commonInitWithPhotos:photos initialPhoto:initialPhoto delegate:delegate];
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self)
+        [self commonInitWithPhotos:nil initialPhoto:nil delegate:nil];
+    return self;
+}
+
+- (void)commonInitWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto delegate:(id<NYTPhotosViewControllerDelegate>)delegate {
+
+    _dataSource = [[NYTPhotosDataSource alloc] initWithPhotos:photos];
+    _delegate = delegate;
+    
+    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPanWithGestureRecognizer:)];
+    _singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTapWithGestureRecognizer:)];
+    
+    _transitionController = [[NYTPhotoTransitionController alloc] init];
+    self.modalPresentationStyle = UIModalPresentationCustom;
+    self.transitioningDelegate = _transitionController;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
+    
+    _overlayView = [[NYTPhotosOverlayView alloc] initWithFrame:CGRectZero];
+    _overlayView.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"NYTPhotoViewerCloseButtonX" inBundle:[NSBundle nyt_photoViewerResourceBundle] compatibleWithTraitCollection:nil] landscapeImagePhone:[UIImage imageNamed:@"NYTPhotoViewerCloseButtonXLandscape" inBundle:[NSBundle nyt_photoViewerResourceBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonTapped:)];
+    _overlayView.leftBarButtonItem.imageInsets = NYTPhotosViewControllerCloseButtonImageInsets;
+    _overlayView.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
+    
+    _notificationCenter = [[NSNotificationCenter alloc] init];
+    
+    [self setupPageViewControllerWithInitialPhoto:initialPhoto];
+}
+
+- (void)setupPageViewControllerWithInitialPhoto:(id <NYTPhoto>)initialPhoto {
+
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(NYTPhotosViewControllerInterPhotoSpacing)}];
+    self.pageViewController.delegate = self;
+    self.pageViewController.dataSource = self;
+    
+    NYTPhotoViewController *initialPhotoViewController;
+    
+    if ([self.dataSource containsPhoto:initialPhoto])
+        initialPhotoViewController = [self newPhotoViewControllerForPhoto:initialPhoto];
+    else
+        initialPhotoViewController = [self newPhotoViewControllerForPhoto:self.dataSource[0]];
+
+    [self setCurrentlyDisplayedViewController:initialPhotoViewController animated:NO];
+}
 
 - (void)dealloc {
     _pageViewController.dataSource = nil;
@@ -85,20 +148,6 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 }
 
 #pragma mark - UIViewController
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    return [self initWithPhotos:nil];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-
-    if (self) {
-        [self commonInitWithPhotos:nil initialPhoto:nil delegate:nil];
-    }
-
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -154,64 +203,6 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 }
 
 #pragma mark - NYTPhotosViewController
-
-- (instancetype)initWithPhotos:(NSArray *)photos {
-    return [self initWithPhotos:photos initialPhoto:photos.firstObject delegate:nil];
-}
-
-- (instancetype)initWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto {
-    return [self initWithPhotos:photos initialPhoto:initialPhoto delegate:nil];
-}
-
-- (instancetype)initWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto delegate:(id<NYTPhotosViewControllerDelegate>)delegate {
-    self = [super initWithNibName:nil bundle:nil];
-    
-    if (self) {
-        [self commonInitWithPhotos:photos initialPhoto:initialPhoto delegate:delegate];
-    }
-    
-    return self;
-}
-
-- (void)commonInitWithPhotos:(NSArray *)photos initialPhoto:(id <NYTPhoto>)initialPhoto delegate:(id<NYTPhotosViewControllerDelegate>)delegate {
-    _dataSource = [[NYTPhotosDataSource alloc] initWithPhotos:photos];
-    _delegate = delegate;
-
-    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPanWithGestureRecognizer:)];
-    _singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTapWithGestureRecognizer:)];
-
-    _transitionController = [[NYTPhotoTransitionController alloc] init];
-    self.modalPresentationStyle = UIModalPresentationCustom;
-    self.transitioningDelegate = _transitionController;
-    self.modalPresentationCapturesStatusBarAppearance = YES;
-
-    _overlayView = [[NYTPhotosOverlayView alloc] initWithFrame:CGRectZero];
-    _overlayView.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"NYTPhotoViewerCloseButtonX" inBundle:[NSBundle nyt_photoViewerResourceBundle] compatibleWithTraitCollection:nil] landscapeImagePhone:[UIImage imageNamed:@"NYTPhotoViewerCloseButtonXLandscape" inBundle:[NSBundle nyt_photoViewerResourceBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonTapped:)];
-    _overlayView.leftBarButtonItem.imageInsets = NYTPhotosViewControllerCloseButtonImageInsets;
-    _overlayView.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
-
-    _notificationCenter = [[NSNotificationCenter alloc] init];
-
-    [self setupPageViewControllerWithInitialPhoto:initialPhoto];
-}
-
-- (void)setupPageViewControllerWithInitialPhoto:(id <NYTPhoto>)initialPhoto {
-    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(NYTPhotosViewControllerInterPhotoSpacing)}];
-    
-    self.pageViewController.delegate = self;
-    self.pageViewController.dataSource = self;
-    
-    NYTPhotoViewController *initialPhotoViewController;
-    
-    if ([self.dataSource containsPhoto:initialPhoto]) {
-        initialPhotoViewController = [self newPhotoViewControllerForPhoto:initialPhoto];
-    }
-    else {
-        initialPhotoViewController = [self newPhotoViewControllerForPhoto:self.dataSource[0]];
-    }
-    
-    [self setCurrentlyDisplayedViewController:initialPhotoViewController animated:NO];
-}
 
 - (void)addOverlayView {
     NSAssert(self.overlayView != nil, @"_overlayView must be set during initialization, to provide bar button items for this %@", NSStringFromClass([self class]));
