@@ -1,6 +1,7 @@
 
 @import UIKit;
 #import "PhotoObject.h"
+#import "PhotoObjectView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -9,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The image view used internally as the contents of the scroll view.
  */
-@property (nonatomic, readonly) UIImageView *imageView;
+@property (nonatomic, readonly) PhotoObjectView *imageView;
 
 /**
  *  Initializes a scaling image view with a `UIImage`. This object is a `UIScrollView` that contains a `UIImageView`. This allows for zooming and panning around the image.

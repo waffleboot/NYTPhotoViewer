@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoObject : NSObject
-@property (nonatomic, strong, readonly) UIImage *photoImage;
+@property (nonatomic, assign, readonly) CGSize size;
 + (instancetype)photoNamed:(NSString *)name;
+- (void)copyToPasteboard;
 @end

@@ -67,7 +67,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 #pragma mark - NSObject(UIResponderStandardEditActions)
 
 - (void)copy:(id)sender {
-    [[UIPasteboard generalPasteboard] setImage:self.currentlyDisplayedPhoto.image];
+    [self.currentlyDisplayedPhoto.image copyToPasteboard];
 }
 
 #pragma mark - UIResponder
@@ -271,7 +271,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     }
     
     if (!clientDidHandle && (self.currentlyDisplayedPhoto.image)) {
-        UIImage *image = self.currentlyDisplayedPhoto.image;
+        PhotoObject *image = self.currentlyDisplayedPhoto.image;
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
         activityViewController.popoverPresentationController.barButtonItem = sender;
         activityViewController.completionWithItemsHandler = ^(NSString * __nullable activityType, BOOL completed, NSArray * __nullable returnedItems, NSError * __nullable activityError) {

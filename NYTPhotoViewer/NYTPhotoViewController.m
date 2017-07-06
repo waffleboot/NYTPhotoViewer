@@ -125,7 +125,7 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
     }
 }
 
-- (void)updateImage:(UIImage *)image {
+- (void)updateImage:(PhotoObject *)image {
     [self.scalingImageView updateImage:image];
     if (image) {
         [self.loadingView removeFromSuperview];

@@ -1,5 +1,6 @@
 
 #import "PhotoObject.h"
+#import "PhotoObject+Private.h"
 
 @interface PhotoObject ()
 @property (nonatomic, strong, readwrite) UIImage *photoImage;
@@ -17,6 +18,14 @@
         _photoImage = [UIImage imageNamed:name];
     }
     return self;
+}
+
+- (CGSize)size {
+    return self.photoImage.size;
+}
+
+- (void)copyToPasteboard {
+    [[UIPasteboard generalPasteboard] setImage:self.photoImage];
 }
 
 @end
