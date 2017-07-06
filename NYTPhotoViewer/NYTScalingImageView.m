@@ -89,11 +89,11 @@
 }
 
 - (void)updateZoomScale {
-    if (self.imageView.image) {
+    if (self.imageView.photoObject) {
         CGRect scrollViewFrame = self.bounds;
         
-        CGFloat scaleWidth = scrollViewFrame.size.width / self.imageView.image.size.width;
-        CGFloat scaleHeight = scrollViewFrame.size.height / self.imageView.image.size.height;
+        CGFloat scaleWidth = scrollViewFrame.size.width / self.imageView.photoObject.size.width;
+        CGFloat scaleHeight = scrollViewFrame.size.height / self.imageView.photoObject.size.height;
         CGFloat minScale = MIN(scaleWidth, scaleHeight);
         
         self.minimumZoomScale = minScale;

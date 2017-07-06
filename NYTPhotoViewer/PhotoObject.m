@@ -3,7 +3,7 @@
 #import "PhotoObject+Private.h"
 
 @interface PhotoObject ()
-@property (nonatomic, strong, readwrite) UIImage *photoImage;
+@property (nonatomic, strong, readwrite) NSString *name;
 @end
 
 @implementation PhotoObject
@@ -15,17 +15,17 @@
 - (instancetype)initWithName:(NSString *)name {
     self = [super init];
     if (self) {
-        _photoImage = [UIImage imageNamed:name];
+        _name = name;
     }
     return self;
 }
 
 - (CGSize)size {
-    return self.photoImage.size;
+    return CGSizeMake(1280, 720);
 }
 
 - (void)copyToPasteboard {
-    [[UIPasteboard generalPasteboard] setImage:self.photoImage];
+    [[UIPasteboard generalPasteboard] setString:self.name];
 }
 
 @end

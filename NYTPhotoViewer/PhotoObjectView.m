@@ -4,9 +4,17 @@
 
 @implementation PhotoObjectView
 - (instancetype)initWithPhotoObject:(PhotoObject *)photoObject {
-    return [super initWithImage:photoObject.photoImage];
+    CGRect frame = photoObject ? CGRectMake(0, 0, photoObject.size.width, photoObject.size.height) : CGRectZero;
+    self = [super initWithFrame:frame];
+    if (self) {
+        _photoObject = photoObject;
+        self.backgroundColor = [UIColor redColor];
+        NSLog(@"%@", photoObject.name);
+    }
+    return self;
 }
 - (void)setPhotoObject:(PhotoObject *)photoObject {
-    self.image = photoObject.photoImage;
+    NSLog(@"%@", photoObject.name);
+    _photoObject = photoObject;
 }
 @end
