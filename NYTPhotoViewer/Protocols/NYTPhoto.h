@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "PhotoObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  This property is used if and only if `-imageData` returns `nil`. Note, however, that returning `UIImage`s from this property whenever possible will result in better performance. See `-imageData`'s documentation for discussion.
  */
-@property (nonatomic, readonly, nullable) UIImage *image;
+@property (nonatomic, readonly, nullable) PhotoObject *image;
 
 /**
  *  The image data to display.
@@ -36,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  This property is used if and only if `-imageData` returns `nil`.
  */
-@property (nonatomic, readonly, nullable) UIImage *placeholderImage;
+@property (nonatomic, readonly, nullable) PhotoObject *placeholderImage;
 
 /**
  *  An attributed string for display as the title of the caption.
