@@ -14,7 +14,6 @@
 
 // Redeclare all the properties as readwrite for sample/testing purposes.
 @property (nonatomic) PhotoObject *image;
-@property (nonatomic) NSData *imageData;
 @property (nonatomic) PhotoObject *placeholderImage;
 @property (nonatomic) NSAttributedString *attributedCaptionTitle;
 @property (nonatomic) NSAttributedString *attributedCaptionSummary;

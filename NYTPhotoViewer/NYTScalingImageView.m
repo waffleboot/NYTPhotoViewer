@@ -20,7 +20,7 @@
     self = [super initWithCoder:aDecoder];
 
     if (self) {
-        [self commonInitWithImage:nil imageData:nil];
+        [self commonInitWithImage:nil];
     }
 
     return self;
@@ -43,64 +43,38 @@
     self = [super initWithFrame:frame];
 
     if (self) {
-        [self commonInitWithImage:image imageData:nil];
+        [self commonInitWithImage:image];
     }
     
     return self;
 }
 
-- (instancetype)initWithImageData:(NSData *)imageData frame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        [self commonInitWithImage:nil imageData:imageData];
-    }
-    
-    return self;
-}
-
-- (void)commonInitWithImage:(UIImage *)image imageData:(NSData *)imageData {
-    [self setupInternalImageViewWithImage:image imageData:imageData];
+- (void)commonInitWithImage:(UIImage *)image {
+    [self setupInternalImageViewWithImage:image];
     [self setupImageScrollView];
     [self updateZoomScale];
 }
 
 #pragma mark - Setup
 
-- (void)setupInternalImageViewWithImage:(UIImage *)image imageData:(NSData *)imageData {
-    UIImage *imageToUse = image ?: [UIImage imageWithData:imageData];
+- (void)setupInternalImageViewWithImage:(UIImage *)image {
 
-    self.imageView = [[UIImageView alloc] initWithImage:imageToUse];
+    self.imageView = [[UIImageView alloc] initWithImage:image];
 
-    [self updateImage:imageToUse imageData:imageData];
+    [self updateImage:image];
     
     [self addSubview:self.imageView];
 }
 
 - (void)updateImage:(UIImage *)image {
-    [self updateImage:image imageData:nil];
-}
-
-- (void)updateImageData:(NSData *)imageData {
-    [self updateImage:nil imageData:imageData];
-}
-
-- (void)updateImage:(UIImage *)image imageData:(NSData *)imageData {
-#ifdef DEBUG
-    if (imageData != nil) {
-        NSLog(@"[NYTPhotoViewer] Warning! You're providing imageData for a photo, but NYTPhotoViewer was compiled without animated GIF support. You should use native UIImages for non-animated photos. See the NYTPhoto protocol documentation for discussion.");
-    }
-#endif // DEBUG
-
-    UIImage *imageToUse = image ?: [UIImage imageWithData:imageData];
 
     // Remove any transform currently applied by the scroll view zooming.
     self.imageView.transform = CGAffineTransformIdentity;
-    self.imageView.image = imageToUse;
+    self.imageView.image = image;
     
-    self.imageView.frame = CGRectMake(0, 0, imageToUse.size.width, imageToUse.size.height);
+    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     
-    self.contentSize = imageToUse.size;
+    self.contentSize = image.size;
     
     [self updateZoomScale];
     [self centerScrollViewContents];
