@@ -12,8 +12,12 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     NYTViewControllerPhotoCount,
 };
 
-@interface NYTPhotoTests : NSObject
+@interface NSArray (Photos)
 
 + (NSArray<NYTExamplePhoto *> *)newTestPhotos;
+
+- (BOOL)isNoReferenceView:(id<NYTPhoto>)photo;
+- (BOOL)isCustomEverything:(id<NYTPhoto>)photo;
+- (BOOL)isCustomMaxZoomScale:(id<NYTPhoto>)photo;
 
 @end

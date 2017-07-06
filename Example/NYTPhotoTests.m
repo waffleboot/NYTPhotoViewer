@@ -1,7 +1,7 @@
 
 #import "NYTPhotoTests.h"
 
-@implementation NYTPhotoTests
+@implementation NSArray (Photos)
 
 + (NSArray<NYTExamplePhoto *> *)newTestPhotos {
 
@@ -57,6 +57,18 @@
     }
     
     return photos;
+}
+
+- (BOOL)isNoReferenceView:(id<NYTPhoto>)photo {
+    return [photo isEqual:self[NYTViewControllerPhotoIndexNoReferenceView]];
+}
+
+- (BOOL)isCustomEverything:(id<NYTPhoto>)photo {
+    return [photo isEqual:self[NYTViewControllerPhotoIndexCustomEverything]];
+}
+
+- (BOOL)isCustomMaxZoomScale:(id<NYTPhoto>)photo {
+    return [photo isEqual:self[NYTViewControllerPhotoIndexCustomMaxZoomScale]];
 }
 
 @end
