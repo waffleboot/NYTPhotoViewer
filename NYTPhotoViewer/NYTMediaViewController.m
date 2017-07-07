@@ -1,5 +1,5 @@
 //
-//  NYTMediaViewController.m
+//  NYTPhotoViewController.m
 //  NYTPhotoViewer
 //
 //  Created by Brian Capps on 2/11/15.
@@ -8,7 +8,7 @@
 
 #import "NYTMediaViewController.h"
 #import "NYTPhoto.h"
-#import "NYTMediaView.h"
+#import "NYTScalingImageView.h"
 #import "NYTPhotoNotification.h"
 
 #ifdef ANIMATED_GIF_SUPPORT
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic) NYTMediaView *scalingImageView;
+@property (nonatomic) NYTScalingImageView *scalingImageView;
 @property (nonatomic) UIView *loadingView;
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 @property (nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
@@ -79,7 +79,7 @@
     self.loadingView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
 }
 
-#pragma mark - NYTMediaViewController
+#pragma mark - NYTPhotoViewController
 
 - (instancetype)initWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     self = [super initWithNibName:nil bundle:nil];
@@ -94,7 +94,7 @@
 - (void)commonInitWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     _photo = photo;
     
-    _scalingImageView = [[NYTMediaView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
+    _scalingImageView = [[NYTScalingImageView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
     
     if (!photo.content && !photo.placeholderImage) {
         [self setupLoadingView:loadingView];

@@ -1,5 +1,5 @@
 //
-//  NYTMediaView.h
+//  NYTScalingImageView.h
 //  NYTPhotoViewer
 //
 //  Created by Harrison, Andrew on 7/23/13.

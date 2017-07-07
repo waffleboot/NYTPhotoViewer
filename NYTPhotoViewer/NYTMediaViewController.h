@@ -1,5 +1,5 @@
 //
-//  NYTMediaViewController.h
+//  NYTPhotoViewController.h
 //  NYTPhotoViewer
 //
 //  Created by Brian Capps on 2/11/15.
@@ -8,16 +8,17 @@
 
 @import UIKit;
 #import "NYTPhotoContainer.h"
+#import "PhotoViewController.h"
 
 @protocol NYTPhoto;
-@protocol NYTMediaViewControllerDelegate;
+@protocol NYTPhotoViewControllerDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The view controller controlling the display of a single photo object.
  */
-@interface NYTMediaViewController : UIViewController <NYTPhotoContainer>
+@interface NYTMediaViewController : UIViewController <NYTPhotoContainer,PhotoViewController>
 
 @property (nonatomic, readonly) UIView *transitionView;
 
@@ -34,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The object that acts as the photo view controller's delegate.
  */
-@property (nonatomic, weak, nullable) id <NYTMediaViewControllerDelegate> delegate;
+@property (nonatomic, weak, nullable) id <PhotoViewControllerDelegate> delegate;
 
 /**
  *  The designated initializer that takes the photo and activity view.
@@ -48,20 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithPhoto:(nullable id <NYTPhoto>)photo loadingView:(nullable UIView *)loadingView notificationCenter:(nullable NSNotificationCenter *)notificationCenter NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic) CGFloat maximumZoomScale;
-
-@end
-
-@protocol NYTMediaViewControllerDelegate <NSObject>
-
-@optional
-
-/**
- *  Called when a long press is recognized.
- *
- *  @param photoViewController        The `NYTPhotoViewController` instance that sent the delegate message.
- *  @param longPressGestureRecognizer The long press gesture recognizer that recognized the long press.
- */
-- (void)photoViewController:(NYTMediaViewController *)photoViewController didLongPressWithGestureRecognizer:(UILongPressGestureRecognizer *)longPressGestureRecognizer;
 
 @end
 
