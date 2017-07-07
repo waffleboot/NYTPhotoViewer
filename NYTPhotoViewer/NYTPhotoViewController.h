@@ -9,8 +9,6 @@
 @import UIKit;
 #import "NYTPhotoContainer.h"
 
-@class NYTScalingImageView;
-
 @protocol NYTPhoto;
 @protocol NYTPhotoViewControllerDelegate;
 
