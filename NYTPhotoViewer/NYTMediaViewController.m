@@ -24,7 +24,6 @@
 @property (nonatomic) NYTScalingImageView *scalingImageView;
 @property (nonatomic) UIView *loadingView;
 @property (nonatomic) NSNotificationCenter *notificationCenter;
-@property (nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @end
@@ -66,7 +65,6 @@
     [self.view addSubview:self.loadingView];
     [self.loadingView sizeToFit];
     
-    [self.view addGestureRecognizer:self.doubleTapGestureRecognizer];
     [self.view addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
@@ -143,32 +141,7 @@
 #pragma mark - Gesture Recognizers
 
 - (void)setupGestureRecognizers {
-    self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTapWithGestureRecognizer:)];
-    self.doubleTapGestureRecognizer.numberOfTapsRequired = 2;
-    
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressWithGestureRecognizer:)];
-}
-
-- (void)didDoubleTapWithGestureRecognizer:(UITapGestureRecognizer *)recognizer {
-    CGPoint pointInView = [recognizer locationInView:self.scalingImageView.imageView];
-    
-    CGFloat newZoomScale = self.scalingImageView.maximumZoomScale;
-    
-    if (self.scalingImageView.zoomScale >= self.scalingImageView.maximumZoomScale
-        || ABS(self.scalingImageView.zoomScale - self.scalingImageView.maximumZoomScale) <= 0.01) {
-        newZoomScale = self.scalingImageView.minimumZoomScale;
-    }
-    
-    CGSize scrollViewSize = self.scalingImageView.bounds.size;
-    
-    CGFloat width = scrollViewSize.width / newZoomScale;
-    CGFloat height = scrollViewSize.height / newZoomScale;
-    CGFloat originX = pointInView.x - (width / 2.0);
-    CGFloat originY = pointInView.y - (height / 2.0);
-    
-    CGRect rectToZoomTo = CGRectMake(originX, originY, width, height);
-    
-    [self.scalingImageView zoomToRect:rectToZoomTo animated:YES];
 }
 
 - (void)didLongPressWithGestureRecognizer:(UILongPressGestureRecognizer *)recognizer {
