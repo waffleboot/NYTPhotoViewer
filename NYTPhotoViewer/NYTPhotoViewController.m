@@ -145,6 +145,14 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
     }
 }
 
+- (UIView *)transitionView {
+    return self.scalingImageView.imageView;
+}
+
+- (void)setMaximumZoomScale:(CGFloat)maximumZoomScale {
+    self.scalingImageView.maximumZoomScale = maximumZoomScale;
+}
+
 #pragma mark - Gesture Recognizers
 
 - (void)setupGestureRecognizers {

@@ -26,10 +26,7 @@ extern NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification;
  */
 @interface NYTPhotoViewController : UIViewController <NYTPhotoContainer>
 
-/**
- *  The internal scaling image view used to display the photo.
- */
-@property (nonatomic, readonly) NYTScalingImageView *scalingImageView;
+@property (nonatomic, readonly) UIView *transitionView;
 
 /**
  *  The internal activity view shown while the image is loading. Set from the initializer.
@@ -56,6 +53,8 @@ extern NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification;
  *  @return A fully initialized object.
  */
 - (instancetype)initWithPhoto:(nullable id <NYTPhoto>)photo loadingView:(nullable UIView *)loadingView notificationCenter:(nullable NSNotificationCenter *)notificationCenter NS_DESIGNATED_INITIALIZER;
+
+@property (nonatomic) CGFloat maximumZoomScale;
 
 @end
 
