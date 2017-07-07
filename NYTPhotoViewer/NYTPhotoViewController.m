@@ -9,12 +9,11 @@
 #import "NYTPhotoViewController.h"
 #import "NYTPhoto.h"
 #import "NYTScalingImageView.h"
+#import "NYTPhotoNotification.h"
 
 #ifdef ANIMATED_GIF_SUPPORT
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #endif
-
-NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhotoViewControllerPhotoImageUpdatedNotification";
 
 @interface NYTPhotoViewController () <UIScrollViewDelegate>
 
@@ -59,7 +58,7 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.notificationCenter addObserver:self selector:@selector(photoImageUpdatedWithNotification:) name:NYTPhotoViewControllerPhotoImageUpdatedNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(photoImageUpdatedWithNotification:) name:NYTPhotosViewControllerPhotoImageUpdatedNotification object:nil];
     
     self.scalingImageView.frame = self.view.bounds;
     [self.view addSubview:self.scalingImageView];

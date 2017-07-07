@@ -15,6 +15,7 @@
 #import "NYTPhotosOverlayView.h"
 #import "NYTPhotoCaptionView.h"
 #import "NSBundle+NYTPhotoViewer.h"
+#import "NYTPhotoNotification.h"
 
 #ifdef ANIMATED_GIF_SUPPORT
 #import <FLAnimatedImage/FLAnimatedImage.h>
@@ -23,6 +24,7 @@
 NSString * const NYTPhotosViewControllerDidNavigateToPhotoNotification = @"NYTPhotosViewControllerDidNavigateToPhotoNotification";
 NSString * const NYTPhotosViewControllerWillDismissNotification = @"NYTPhotosViewControllerWillDismissNotification";
 NSString * const NYTPhotosViewControllerDidDismissNotification = @"NYTPhotosViewControllerDidDismissNotification";
+NSString * const NYTPhotosViewControllerPhotoImageUpdatedNotification = @"NYTPhotosViewControllerPhotoImageUpdatedNotification";
 
 static const CGFloat NYTPhotosViewControllerOverlayAnimationDuration = 0.2;
 static const CGFloat NYTPhotosViewControllerInterPhotoSpacing = 16.0;
@@ -355,7 +357,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
         return;
     }
 
-    [self.notificationCenter postNotificationName:NYTPhotoViewControllerPhotoImageUpdatedNotification object:photo];
+    [self.notificationCenter postNotificationName:NYTPhotosViewControllerPhotoImageUpdatedNotification object:photo];
 
     if ([self.currentlyDisplayedPhoto isEqual:photo]) {
         [self updateOverlayInformation];

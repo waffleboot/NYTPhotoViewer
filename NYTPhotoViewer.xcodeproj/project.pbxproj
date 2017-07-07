@@ -103,6 +103,8 @@
 		93F45B1B1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
 		F5BB440D1F0FD6E0003125F4 /* NYTPhotoContent.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5BB44161F0FD859003125F4 /* NYTExamplePhotoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */; };
+		F5BB441B1F0FE52A003125F4 /* NYTMediaViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB44191F0FE52A003125F4 /* NYTMediaViewController.h */; };
+		F5BB441C1F0FE52A003125F4 /* NYTMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB441A1F0FE52A003125F4 /* NYTMediaViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,6 +305,9 @@
 		F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoContent.h; sourceTree = "<group>"; };
 		F5BB44141F0FD859003125F4 /* NYTExamplePhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTExamplePhotoContent.h; sourceTree = "<group>"; };
 		F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTExamplePhotoContent.m; sourceTree = "<group>"; };
+		F5BB44191F0FE52A003125F4 /* NYTMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTMediaViewController.h; sourceTree = "<group>"; };
+		F5BB441A1F0FE52A003125F4 /* NYTMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTMediaViewController.m; sourceTree = "<group>"; };
+		F5BB44231F0FE773003125F4 /* NYTPhotoNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYTPhotoNotification.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +399,8 @@
 				111084401C87682300699670 /* NYTPhotoTransitionController.m */,
 				111084411C87682300699670 /* NYTPhotoViewController.h */,
 				111084421C87682300699670 /* NYTPhotoViewController.m */,
+				F5BB44191F0FE52A003125F4 /* NYTMediaViewController.h */,
+				F5BB441A1F0FE52A003125F4 /* NYTMediaViewController.m */,
 				111084371C87682300699670 /* NYTPhotoViewerArrayDataSource.h */,
 				111084381C87682300699670 /* NYTPhotoViewerArrayDataSource.m */,
 				93F45B161E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h */,
@@ -403,6 +410,7 @@
 				111084451C87682300699670 /* Protocols */,
 				1110844A1C87682300699670 /* Resource Loading */,
 				1110840B1C875B5000699670 /* Info.plist */,
+				F5BB44231F0FE773003125F4 /* NYTPhotoNotification.h */,
 			);
 			path = NYTPhotoViewer;
 			sourceTree = "<group>";
@@ -530,6 +538,7 @@
 				111084541C87682300699670 /* NYTPhotosViewController.h in Headers */,
 				111084601C87682300699670 /* NYTPhotoContainer.h in Headers */,
 				1110844E1C87682300699670 /* NYTPhotoDismissalInteractionController.h in Headers */,
+				F5BB441B1F0FE52A003125F4 /* NYTMediaViewController.h in Headers */,
 				111084611C87682300699670 /* NYTPhotoViewerDataSource.h in Headers */,
 				1110845A1C87682300699670 /* NYTPhotoViewController.h in Headers */,
 				1110845C1C87682300699670 /* NYTScalingImageView.h in Headers */,
@@ -839,6 +848,7 @@
 				111084551C87682300699670 /* NYTPhotosViewController.m in Sources */,
 				93F45B1A1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */,
 				1110844D1C87682300699670 /* NYTPhotoCaptionView.m in Sources */,
+				F5BB441C1F0FE52A003125F4 /* NYTMediaViewController.m in Sources */,
 				1110845D1C87682300699670 /* NYTScalingImageView.m in Sources */,
 				111084511C87682300699670 /* NYTPhotoViewerArrayDataSource.m in Sources */,
 				111084531C87682300699670 /* NYTPhotosOverlayView.m in Sources */,
