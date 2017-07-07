@@ -69,7 +69,7 @@
 - (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithImage:content.image imageData:content.imageData];
+        [self commonInitWithImage:content.image ?: placeholder imageData:content.imageData];
     }
     return self;
 }
