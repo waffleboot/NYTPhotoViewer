@@ -105,6 +105,8 @@
 		F5BB44161F0FD859003125F4 /* NYTExamplePhotoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */; };
 		F5BB441B1F0FE52A003125F4 /* NYTMediaViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB44191F0FE52A003125F4 /* NYTMediaViewController.h */; };
 		F5BB441C1F0FE52A003125F4 /* NYTMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB441A1F0FE52A003125F4 /* NYTMediaViewController.m */; };
+		F5BB44261F0FE8D1003125F4 /* NYTMediaView.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB44241F0FE8D1003125F4 /* NYTMediaView.h */; };
+		F5BB44271F0FE8D1003125F4 /* NYTMediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB44251F0FE8D1003125F4 /* NYTMediaView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +310,8 @@
 		F5BB44191F0FE52A003125F4 /* NYTMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTMediaViewController.h; sourceTree = "<group>"; };
 		F5BB441A1F0FE52A003125F4 /* NYTMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTMediaViewController.m; sourceTree = "<group>"; };
 		F5BB44231F0FE773003125F4 /* NYTPhotoNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYTPhotoNotification.h; sourceTree = "<group>"; };
+		F5BB44241F0FE8D1003125F4 /* NYTMediaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTMediaView.h; sourceTree = "<group>"; };
+		F5BB44251F0FE8D1003125F4 /* NYTMediaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTMediaView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +411,8 @@
 				93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */,
 				111084431C87682300699670 /* NYTScalingImageView.h */,
 				111084441C87682300699670 /* NYTScalingImageView.m */,
+				F5BB44241F0FE8D1003125F4 /* NYTMediaView.h */,
+				F5BB44251F0FE8D1003125F4 /* NYTMediaView.m */,
 				111084451C87682300699670 /* Protocols */,
 				1110844A1C87682300699670 /* Resource Loading */,
 				1110840B1C875B5000699670 /* Info.plist */,
@@ -547,6 +553,7 @@
 				93F45B181E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h in Headers */,
 				111084581C87682300699670 /* NYTPhotoTransitionController.h in Headers */,
 				1110845F1C87682300699670 /* NYTPhotoCaptionViewLayoutWidthHinting.h in Headers */,
+				F5BB44261F0FE8D1003125F4 /* NYTMediaView.h in Headers */,
 				1110845E1C87682300699670 /* NYTPhoto.h in Headers */,
 				111084501C87682300699670 /* NYTPhotoViewerArrayDataSource.h in Headers */,
 				1110840A1C875B5000699670 /* NYTPhotoViewer.h in Headers */,
@@ -849,6 +856,7 @@
 				93F45B1A1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */,
 				1110844D1C87682300699670 /* NYTPhotoCaptionView.m in Sources */,
 				F5BB441C1F0FE52A003125F4 /* NYTMediaViewController.m in Sources */,
+				F5BB44271F0FE8D1003125F4 /* NYTMediaView.m in Sources */,
 				1110845D1C87682300699670 /* NYTScalingImageView.m in Sources */,
 				111084511C87682300699670 /* NYTPhotoViewerArrayDataSource.m in Sources */,
 				111084531C87682300699670 /* NYTPhotosOverlayView.m in Sources */,

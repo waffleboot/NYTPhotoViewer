@@ -8,7 +8,7 @@
 
 #import "NYTMediaViewController.h"
 #import "NYTPhoto.h"
-#import "NYTScalingImageView.h"
+#import "NYTMediaView.h"
 #import "NYTPhotoNotification.h"
 
 #ifdef ANIMATED_GIF_SUPPORT
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic) NYTScalingImageView *scalingImageView;
+@property (nonatomic) NYTMediaView *scalingImageView;
 @property (nonatomic) UIView *loadingView;
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 @property (nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
@@ -94,7 +94,7 @@
 - (void)commonInitWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     _photo = photo;
     
-    _scalingImageView = [[NYTScalingImageView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
+    _scalingImageView = [[NYTMediaView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
     
     if (!photo.content && !photo.placeholderImage) {
         [self setupLoadingView:loadingView];
