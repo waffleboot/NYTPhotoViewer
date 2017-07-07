@@ -101,6 +101,7 @@
 		93F45B191E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 93F45B161E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93F45B1A1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
 		93F45B1B1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
+		F5BB440D1F0FD6E0003125F4 /* NYTPhotoContent.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +299,7 @@
 		9371A7451E43D61E00A8F2EF /* PhotoViewerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerCoordinator.swift; sourceTree = "<group>"; };
 		93F45B161E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoViewerSinglePhotoDataSource.h; sourceTree = "<group>"; };
 		93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTPhotoViewerSinglePhotoDataSource.m; sourceTree = "<group>"; };
+		F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoContent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				111084461C87682300699670 /* NYTPhoto.h */,
+				F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */,
 				111084471C87682300699670 /* NYTPhotoCaptionViewLayoutWidthHinting.h */,
 				111084481C87682300699670 /* NYTPhotoContainer.h */,
 				111084491C87682300699670 /* NYTPhotoViewerDataSource.h */,
@@ -534,6 +537,7 @@
 				111084501C87682300699670 /* NYTPhotoViewerArrayDataSource.h in Headers */,
 				1110840A1C875B5000699670 /* NYTPhotoViewer.h in Headers */,
 				111084651C87684D00699670 /* NYTPhotoCaptionView.h in Headers */,
+				F5BB440D1F0FD6E0003125F4 /* NYTPhotoContent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
