@@ -102,6 +102,7 @@
 		93F45B1A1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
 		93F45B1B1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
 		F5BB440D1F0FD6E0003125F4 /* NYTPhotoContent.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5BB44161F0FD859003125F4 /* NYTExamplePhotoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,8 @@
 		93F45B161E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoViewerSinglePhotoDataSource.h; sourceTree = "<group>"; };
 		93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTPhotoViewerSinglePhotoDataSource.m; sourceTree = "<group>"; };
 		F5BB440C1F0FD6E0003125F4 /* NYTPhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTPhotoContent.h; sourceTree = "<group>"; };
+		F5BB44141F0FD859003125F4 /* NYTExamplePhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTExamplePhotoContent.h; sourceTree = "<group>"; };
+		F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTExamplePhotoContent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +453,8 @@
 				111084931C876D1900699670 /* NYTViewController.m */,
 				111084811C876AA500699670 /* NYTExamplePhoto.h */,
 				111084821C876AA500699670 /* NYTExamplePhoto.m */,
+				F5BB44141F0FD859003125F4 /* NYTExamplePhotoContent.h */,
+				F5BB44151F0FD859003125F4 /* NYTExamplePhotoContent.m */,
 				1110848E1C876CC900699670 /* Main.storyboard */,
 				1110847A1C876A2B00699670 /* LaunchScreen.storyboard */,
 				111084781C876A2B00699670 /* Assets.xcassets */,
@@ -865,6 +870,7 @@
 				111084941C876D1900699670 /* NYTViewController.m in Sources */,
 				111084911C876CE000699670 /* NYTAppDelegate.m in Sources */,
 				111084831C876AA500699670 /* NYTExamplePhoto.m in Sources */,
+				F5BB44161F0FD859003125F4 /* NYTExamplePhotoContent.m in Sources */,
 				1110846E1C876A2B00699670 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -95,11 +95,11 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 - (void)commonInitWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     _photo = photo;
     
-    if (photo.imageData) {
-        _scalingImageView = [[NYTScalingImageView alloc] initWithImageData:photo.imageData frame:CGRectZero];
+    if (photo.content.imageData) {
+        _scalingImageView = [[NYTScalingImageView alloc] initWithImageData:photo.content.imageData frame:CGRectZero];
     }
     else {
-        UIImage *photoImage = photo.image ?: photo.placeholderImage;
+        UIImage *photoImage = photo.content.image ?: photo.placeholderImage;
         _scalingImageView = [[NYTScalingImageView alloc] initWithImage:photoImage frame:CGRectZero];
         
         if (!photoImage) {
@@ -126,7 +126,7 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 - (void)photoImageUpdatedWithNotification:(NSNotification *)notification {
     id <NYTPhoto> photo = notification.object;
     if ([photo conformsToProtocol:@protocol(NYTPhoto)] && [photo isEqual:self.photo]) {
-        [self updateImage:photo.image imageData:photo.imageData];
+        [self updateImage:photo.content.image imageData:photo.content.imageData];
     }
 }
 

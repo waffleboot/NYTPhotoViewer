@@ -68,7 +68,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 #pragma mark - NSObject(UIResponderStandardEditActions)
 
 - (void)copy:(id)sender {
-    [[UIPasteboard generalPasteboard] setImage:self.currentlyDisplayedPhoto.image];
+    [[UIPasteboard generalPasteboard] setImage:self.currentlyDisplayedPhoto.content.image];
 }
 
 #pragma mark - UIResponder
@@ -78,7 +78,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    if (self.shouldHandleLongPress && action == @selector(copy:) && self.currentlyDisplayedPhoto.image) {
+    if (self.shouldHandleLongPress && action == @selector(copy:) && self.currentlyDisplayedPhoto.content.image) {
         return YES;
     }
     
@@ -122,7 +122,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     self.transitionController.startingView = self.referenceViewForCurrentPhoto;
     
     UIView *endingView;
-    if (self.currentlyDisplayedPhoto.image || self.currentlyDisplayedPhoto.placeholderImage) {
+    if (self.currentlyDisplayedPhoto.content.image || self.currentlyDisplayedPhoto.placeholderImage) {
         endingView = self.currentPhotoViewController.scalingImageView.imageView;
     }
     
@@ -275,8 +275,8 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
         clientDidHandle = [self.delegate photosViewController:self handleActionButtonTappedForPhoto:self.currentlyDisplayedPhoto];
     }
     
-    if (!clientDidHandle && (self.currentlyDisplayedPhoto.image || self.currentlyDisplayedPhoto.imageData)) {
-        UIImage *image = self.currentlyDisplayedPhoto.image ? self.currentlyDisplayedPhoto.image : [UIImage imageWithData:self.currentlyDisplayedPhoto.imageData];
+    if (!clientDidHandle && (self.currentlyDisplayedPhoto.content.image || self.currentlyDisplayedPhoto.content.imageData)) {
+        UIImage *image = self.currentlyDisplayedPhoto.content.image ? self.currentlyDisplayedPhoto.content.image : [UIImage imageWithData:self.currentlyDisplayedPhoto.content.imageData];
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
         activityViewController.popoverPresentationController.barButtonItem = sender;
         activityViewController.completionWithItemsHandler = ^(NSString * __nullable activityType, BOOL completed, NSArray * __nullable returnedItems, NSError * __nullable activityError) {
@@ -405,7 +405,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     }
     
     UIView *startingView;
-    if (self.currentlyDisplayedPhoto.image || self.currentlyDisplayedPhoto.placeholderImage || self.currentlyDisplayedPhoto.imageData) {
+    if (self.currentlyDisplayedPhoto.content.image || self.currentlyDisplayedPhoto.placeholderImage || self.currentlyDisplayedPhoto.content.imageData) {
         startingView = self.currentPhotoViewController.scalingImageView.imageView;
     }
     

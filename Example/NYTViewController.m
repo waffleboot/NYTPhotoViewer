@@ -10,6 +10,7 @@
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import "NYTExamplePhoto.h"
+#import "NYTExamplePhotoContent.h"
 
 typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     NYTViewControllerPhotoIndexCustomEverything = 1,
@@ -53,8 +54,8 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
     CGFloat updateImageDelay = 5.0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(updateImageDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (NYTExamplePhoto *photo in dataSource.photos) {
-            if (!photo.image && !photo.imageData) {
-                photo.image = [UIImage imageNamed:@"NYTimesBuilding"];
+            if (!photo.content.image && !photo.content.imageData) {
+                photo.content = [NYTExamplePhotoContent contentNamed:@"NYTimesBuilding"];
                 photo.attributedCaptionSummary = [[NSAttributedString alloc] initWithString:@"Photo which previously had a loading spinner (to see the spinner, reopen the photo viewer and scroll to this photo)" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
                 [photosViewController updatePhoto:photo];
             }
@@ -155,12 +156,12 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
         NYTExamplePhoto *photo = [NYTExamplePhoto new];
 
         if (i == NYTViewControllerPhotoIndexGif) {
-            photo.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"giphy" ofType:@"gif"]];
+            photo.content = [[NYTExamplePhotoContent alloc] initWithImageData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"giphy" ofType:@"gif"]]];
         } else if (i == NYTViewControllerPhotoIndexCustomEverything || i == NYTViewControllerPhotoIndexDefaultLoadingSpinner) {
             // no-op, left here for clarity:
-            photo.image = nil;
+            photo.content = nil;
         } else {
-            photo.image = [UIImage imageNamed:@"NYTimesBuilding"];
+            photo.content = [NYTExamplePhotoContent contentNamed:@"NYTimesBuilding"];
         }
 
         if (i == NYTViewControllerPhotoIndexCustomEverything) {
@@ -211,7 +212,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
 
     [photos addObject:({
         NYTExamplePhoto *p = [NYTExamplePhoto new];
-        p.image = [UIImage imageNamed:@"Chess"];
+        p.content = [NYTExamplePhotoContent contentNamed:@"Chess"];
         p.attributedCaptionTitle = [self attributedTitleFromString:@"Chess"];
         p.attributedCaptionCredit = [self attributedCreditFromString:@"Photo: Chris Dzombak"];
         p;
