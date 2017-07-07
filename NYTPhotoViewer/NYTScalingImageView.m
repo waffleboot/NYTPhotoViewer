@@ -30,7 +30,7 @@
 #pragma mark - UIView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    return [self initWithImage:[UIImage new] frame:frame];
+    return [self initWithContent:nil withPlaceholder:nil frame:frame];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -55,16 +55,6 @@
 }
 
 #pragma mark - NYTScalingImageView
-
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-
-    if (self) {
-        [self commonInitWithImage:image imageData:nil];
-    }
-    
-    return self;
-}
 
 - (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame {
     self = [super initWithFrame:frame];

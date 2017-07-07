@@ -27,17 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) UIImageView *imageView;
 #endif
 
-/**
- *  Initializes a scaling image view with a `UIImage`. This object is a `UIScrollView` that contains a `UIImageView`. This allows for zooming and panning around the image.
- *
- *  @param image A `UIImage` for zooming and panning.
- *  @param frame The frame of the view.
- *
- *  @return A fully initialized object.
- */
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
-
-- (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContent:(nullable id<NYTPhotoContent>)content withPlaceholder:(nullable UIImage *)placeholder frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
 - (void)updateContent:(id<NYTPhotoContent>)content;
 
