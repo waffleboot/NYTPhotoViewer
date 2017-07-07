@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
 
     [self presentViewController:photosViewController animated:YES completion:nil];
 
-    [self updateImagesOnPhotosViewController:photosViewController afterDelayWithDataSource:self.dataSource];
+//    [self updateImagesOnPhotosViewController:photosViewController afterDelayWithDataSource:self.dataSource];
     BOOL demonstrateDataSourceSwitchAfterTenSeconds = NO;
     if (demonstrateDataSourceSwitchAfterTenSeconds) {
         [self switchDataSourceOnPhotosViewController:photosViewController afterDelayWithDataSource:self.dataSource];
@@ -162,6 +162,11 @@ typedef NS_ENUM(NSUInteger, NYTViewControllerPhotoIndex) {
             photo.content = nil;
         } else {
             photo.content = [NYTExamplePhotoContent contentNamed:@"NYTimesBuilding"];
+            
+            NYTExamplePhotoContent *content = [[NYTExamplePhotoContent alloc] init];
+            content.source = [NSURL URLWithString:@"https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a5/20090124_WeeklyAddress.ogv/20090124_WeeklyAddress.ogv.160p.ogv"];
+            photo.content = content;
+            
         }
 
         if (i == NYTViewControllerPhotoIndexCustomEverything) {

@@ -10,6 +10,8 @@
 
 @protocol NYTPhotoContent <NSObject>
 
+@property (nonatomic, readonly, nullable) NSURL *source;
+
 /**
  *  The image to display.
  *

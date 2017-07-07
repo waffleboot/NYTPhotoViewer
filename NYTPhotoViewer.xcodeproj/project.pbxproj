@@ -108,6 +108,16 @@
 		F5BB44261F0FE8D1003125F4 /* NYTMediaView.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB44241F0FE8D1003125F4 /* NYTMediaView.h */; };
 		F5BB44271F0FE8D1003125F4 /* NYTMediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB44251F0FE8D1003125F4 /* NYTMediaView.m */; };
 		F5BB44291F0FEF58003125F4 /* PhotoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB44281F0FEF58003125F4 /* PhotoViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5BB44381F0FF8C8003125F4 /* OGVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB44371F0FF8C8003125F4 /* OGVKit.framework */; };
+		F5BB44391F0FF8F0003125F4 /* OGVKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BB44371F0FF8C8003125F4 /* OGVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443A1F0FF913003125F4 /* libopus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB442D1F0FF89D003125F4 /* libopus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443B1F0FF913003125F4 /* ogg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB442E1F0FF89D003125F4 /* ogg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443C1F0FF913003125F4 /* oggz.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB442F1F0FF89D003125F4 /* oggz.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443D1F0FF913003125F4 /* theora.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB44301F0FF89D003125F4 /* theora.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443E1F0FF913003125F4 /* vorbis.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB44311F0FF89D003125F4 /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB443F1F0FF913003125F4 /* nestegg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB442B1F0FF885003125F4 /* nestegg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB44411F0FF972003125F4 /* VPX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB44401F0FF972003125F4 /* VPX.framework */; };
+		F5BB44421F0FF97B003125F4 /* VPX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB44401F0FF972003125F4 /* VPX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +228,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F5BB44421F0FF97B003125F4 /* VPX.framework in Embed Frameworks */,
+				F5BB443A1F0FF913003125F4 /* libopus.framework in Embed Frameworks */,
+				F5BB443B1F0FF913003125F4 /* ogg.framework in Embed Frameworks */,
+				F5BB443C1F0FF913003125F4 /* oggz.framework in Embed Frameworks */,
+				F5BB443D1F0FF913003125F4 /* theora.framework in Embed Frameworks */,
+				F5BB443E1F0FF913003125F4 /* vorbis.framework in Embed Frameworks */,
+				F5BB443F1F0FF913003125F4 /* nestegg.framework in Embed Frameworks */,
 				111084991C876DDE00699670 /* NYTPhotoViewer.framework in Embed Frameworks */,
 				11BA4AF21C8912980007EC46 /* FLAnimatedImage.framework in Embed Frameworks */,
 			);
@@ -234,6 +251,16 @@
 				11BA4B0D1C8913590007EC46 /* FLAnimatedImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5BB442A1F0FF827003125F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5BB44391F0FF8F0003125F4 /* OGVKit.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -314,6 +341,14 @@
 		F5BB44241F0FE8D1003125F4 /* NYTMediaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTMediaView.h; sourceTree = "<group>"; };
 		F5BB44251F0FE8D1003125F4 /* NYTMediaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYTMediaView.m; sourceTree = "<group>"; };
 		F5BB44281F0FEF58003125F4 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		F5BB442B1F0FF885003125F4 /* nestegg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nestegg.framework; path = Carthage/Build/iOS/nestegg.framework; sourceTree = "<group>"; };
+		F5BB442D1F0FF89D003125F4 /* libopus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libopus.framework; path = Carthage/Build/iOS/libopus.framework; sourceTree = "<group>"; };
+		F5BB442E1F0FF89D003125F4 /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ogg.framework; path = Carthage/Build/iOS/ogg.framework; sourceTree = "<group>"; };
+		F5BB442F1F0FF89D003125F4 /* oggz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = oggz.framework; path = Carthage/Build/iOS/oggz.framework; sourceTree = "<group>"; };
+		F5BB44301F0FF89D003125F4 /* theora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = theora.framework; path = Carthage/Build/iOS/theora.framework; sourceTree = "<group>"; };
+		F5BB44311F0FF89D003125F4 /* vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbis.framework; path = Carthage/Build/iOS/vorbis.framework; sourceTree = "<group>"; };
+		F5BB44371F0FF8C8003125F4 /* OGVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OGVKit.framework; path = Carthage/Build/iOS/OGVKit.framework; sourceTree = "<group>"; };
+		F5BB44401F0FF972003125F4 /* VPX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPX.framework; path = Carthage/Checkouts/OGVKit/Example/Pods/libvpx/VPX.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +356,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BB44411F0FF972003125F4 /* VPX.framework in Frameworks */,
+				F5BB44381F0FF8C8003125F4 /* OGVKit.framework in Frameworks */,
 				11BA4AF01C89128C0007EC46 /* FLAnimatedImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +551,14 @@
 		11BA4B0B1C8913330007EC46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5BB44401F0FF972003125F4 /* VPX.framework */,
+				F5BB44371F0FF8C8003125F4 /* OGVKit.framework */,
+				F5BB442D1F0FF89D003125F4 /* libopus.framework */,
+				F5BB442E1F0FF89D003125F4 /* ogg.framework */,
+				F5BB442F1F0FF89D003125F4 /* oggz.framework */,
+				F5BB44301F0FF89D003125F4 /* theora.framework */,
+				F5BB44311F0FF89D003125F4 /* vorbis.framework */,
+				F5BB442B1F0FF885003125F4 /* nestegg.framework */,
 				11BA4AF51C8912F20007EC46 /* OCMock.xcodeproj */,
 				11BA4AE61C8911A00007EC46 /* FLAnimatedImage.xcodeproj */,
 			);
@@ -600,6 +645,7 @@
 				111084021C875B5000699670 /* Frameworks */,
 				111084031C875B5000699670 /* Headers */,
 				111084041C875B5000699670 /* Resources */,
+				F5BB442A1F0FF827003125F4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1105,6 +1151,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/OGVKit/Example/Pods/libvpx",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1128,6 +1179,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/OGVKit/Example/Pods/libvpx",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = "ANIMATED_GIF_SUPPORT=1";
 				INFOPLIST_FILE = NYTPhotoViewer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

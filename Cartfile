@@ -1,1 +1,2 @@
 github "Flipboard/FLAnimatedImage" ~> 1.0.12
+github "https://github.com/brion/OGVKit" "0.5.11"

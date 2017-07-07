@@ -7,22 +7,16 @@
 //
 
 #import "NYTMediaView.h"
+@import OGVKit;
 
 #import "tgmath.h"
-
-#ifdef ANIMATED_GIF_SUPPORT
-#import <FLAnimatedImage/FLAnimatedImage.h>
-#endif
 
 @interface NYTMediaView ()
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-#ifdef ANIMATED_GIF_SUPPORT
-@property (nonatomic) FLAnimatedImageView *imageView;
-#else
-@property (nonatomic) UIImageView *imageView;
-#endif
+@property (nonatomic) OGVPlayerView *playerView;
+
 @end
 
 @implementation NYTMediaView
@@ -37,7 +31,7 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        [self commonInitWithImage:nil imageData:nil];
+        [self commonInitWithSource:nil];
     }
     
     return self;
@@ -59,57 +53,42 @@
 - (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithImage:content.image ?: placeholder imageData:content.imageData];
+        [self commonInitWithSource:content.source];
     }
     return self;
 }
 
-- (void)commonInitWithImage:(UIImage *)image imageData:(NSData *)imageData {
-    [self setupInternalImageViewWithImage:image imageData:imageData];
+- (void)commonInitWithSource:(NSURL *)source {
+    [self setupInternalImageViewWithSource:source];
     [self setupImageScrollView];
     [self updateZoomScale];
 }
 
 #pragma mark - Setup
 
-- (void)setupInternalImageViewWithImage:(UIImage *)image imageData:(NSData *)imageData {
-    UIImage *imageToUse = image ?: [UIImage imageWithData:imageData];
+- (void)setupInternalImageViewWithSource:(NSURL *)source {
+
+    self.playerView = [[OGVPlayerView alloc] init];
+
+    [self updateSource:source];
     
-#ifdef ANIMATED_GIF_SUPPORT
-    self.imageView = [[FLAnimatedImageView alloc] initWithImage:imageToUse];
-#else
-    self.imageView = [[UIImageView alloc] initWithImage:imageToUse];
-#endif
-    [self updateImage:imageToUse imageData:imageData];
-    
-    [self addSubview:self.imageView];
+    [self addSubview:self.playerView];
 }
 
 - (void)updateContent:(id<NYTPhotoContent>)content {
-    [self updateImage:content.image imageData:content.imageData];
+    [self updateSource:content.source ];
 }
 
-- (void)updateImage:(UIImage *)image imageData:(NSData *)imageData {
-#ifdef DEBUG
-#ifndef ANIMATED_GIF_SUPPORT
-    if (imageData != nil) {
-        NSLog(@"[NYTPhotoViewer] Warning! You're providing imageData for a photo, but NYTPhotoViewer was compiled without animated GIF support. You should use native UIImages for non-animated photos. See the NYTPhoto protocol documentation for discussion.");
-    }
-#endif // ANIMATED_GIF_SUPPORT
-#endif // DEBUG
-    
-    UIImage *imageToUse = image ?: [UIImage imageWithData:imageData];
+- (void)updateSource:(NSURL *)source {
     
     // Remove any transform currently applied by the scroll view zooming.
-    self.imageView.transform = CGAffineTransformIdentity;
-    self.imageView.image = imageToUse;
     
-#ifdef ANIMATED_GIF_SUPPORT
-    // It's necessarry to first assign the UIImage so calulations for layout go right (see above)
-    self.imageView.animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:imageData];
-#endif
+    self.playerView.sourceURL = source;
+    if (source) {
+        [self.playerView play];
+    }
     
-    self.imageView.frame = CGRectMake(0, 0, imageToUse.size.width, imageToUse.size.height);
+    self.playerView.frame = CGRectMake(0, 0, 1280, 720);
     
     [self updateZoomScale];
     [self centerScrollViewContents];
@@ -120,18 +99,14 @@
 }
 
 - (void)updateZoomScale {
-#ifdef ANIMATED_GIF_SUPPORT
-    if (self.imageView.animatedImage || self.imageView.image) {
-#else
-    if (self.imageView.image) {
-#endif
+    if (self.playerView.sourceURL) {
         CGRect scrollViewFrame = self.bounds;
             
-        CGFloat scaleWidth = scrollViewFrame.size.width / self.imageView.image.size.width;
-        CGFloat scaleHeight = scrollViewFrame.size.height / self.imageView.image.size.height;
+        CGFloat scaleWidth = scrollViewFrame.size.width / 284.;
+        CGFloat scaleHeight = scrollViewFrame.size.height / 160.;
         CGFloat minScale = MIN(scaleWidth, scaleHeight);
             
-        self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width * minScale, self.imageView.image.size.height * minScale);
+        self.playerView.frame = CGRectMake(0, 0, 284. * minScale, 160. * minScale);
             
     }
 }
@@ -139,7 +114,7 @@
 #pragma mark - Centering
     
 - (void)centerScrollViewContents {
-    self.imageView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    self.playerView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
     
 @end

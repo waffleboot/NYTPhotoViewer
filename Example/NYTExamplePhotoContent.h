@@ -10,6 +10,7 @@
 #import "NYTPhotoContent.h"
 
 @interface NYTExamplePhotoContent : NSObject <NYTPhotoContent>
+@property (nonatomic) NSURL *source;
 @property (nonatomic) UIImage *image;
 @property (nonatomic) NSData *imageData;
 - (instancetype)initWithImageData:(NSData *)imageData;
