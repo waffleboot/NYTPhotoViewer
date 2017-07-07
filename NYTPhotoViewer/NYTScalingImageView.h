@@ -37,16 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
-/**
- *  Initializes a scaling image view with `NSData` representing an animated image. This object is a `UIScrollView` that contains a `UIImageView`. This allows for zooming and panning around the image.
- *
- *  @param imageData An `NSData` representing of an animated image for zooming and panning.
- *  @param frame The frame of the view.
- *
- *  @return A fully initialized object.
- */
-- (instancetype)initWithImageData:(NSData *)imageData frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
-
 - (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
 - (void)updateContent:(id<NYTPhotoContent>)content;

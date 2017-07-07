@@ -66,16 +66,6 @@
     return self;
 }
 
-- (instancetype)initWithImageData:(NSData *)imageData frame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        [self commonInitWithImage:nil imageData:imageData];
-    }
-    
-    return self;
-}
-
 - (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
