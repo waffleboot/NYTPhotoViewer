@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+#import "NYTPhotoContent.h"
+
 #ifdef ANIMATED_GIF_SUPPORT
 @class FLAnimatedImageView;
 #endif
@@ -45,19 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithImageData:(NSData *)imageData frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
-/**
- *  Updates the image in the image view and centers and zooms the new image.
- *
- *  @param image The new image to display in the image view.
- */
-- (void)updateImage:(UIImage *)image;
-
-/**
- *  Updates the image in the image view and centers and zooms the new image.
- *
- *  @param imageData The data representing an animated image to display in the image view.
- */
-- (void)updateImageData:(NSData *)imageData;
+- (void)updateContent:(id<NYTPhotoContent>)content;
 
 /**
  *  Centers the image inside of the scroll view. Typically used after rotation, or when zooming has finished.

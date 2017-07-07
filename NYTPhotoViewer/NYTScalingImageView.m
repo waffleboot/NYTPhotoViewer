@@ -97,12 +97,8 @@
     [self addSubview:self.imageView];
 }
 
-- (void)updateImage:(UIImage *)image {
-    [self updateImage:image imageData:nil];
-}
-
-- (void)updateImageData:(NSData *)imageData {
-    [self updateImage:nil imageData:imageData];
+- (void)updateContent:(id<NYTPhotoContent>)content {
+    [self updateImage:content.image imageData:content.imageData];
 }
 
 - (void)updateImage:(UIImage *)image imageData:(NSData *)imageData {

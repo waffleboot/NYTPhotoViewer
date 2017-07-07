@@ -126,19 +126,13 @@ NSString * const NYTPhotoViewControllerPhotoImageUpdatedNotification = @"NYTPhot
 - (void)photoImageUpdatedWithNotification:(NSNotification *)notification {
     id <NYTPhoto> photo = notification.object;
     if ([photo conformsToProtocol:@protocol(NYTPhoto)] && [photo isEqual:self.photo]) {
-        [self updateImage:photo.content.image imageData:photo.content.imageData];
+        [self updateContent:photo.content];
     }
 }
 
-- (void)updateImage:(UIImage *)image imageData:(NSData *)imageData {
-    if (imageData) {
-        [self.scalingImageView updateImageData:imageData];
-    }
-    else {
-        [self.scalingImageView updateImage:image];
-    }
-    
-    if (imageData || image) {
+- (void)updateContent:(id<NYTPhotoContent>)content {
+    [self.scalingImageView updateContent:content];
+    if (content.imageData || content.image) {
         [self.loadingView removeFromSuperview];
     } else {
         [self.view addSubview:self.loadingView];
