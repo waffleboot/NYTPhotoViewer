@@ -8,20 +8,20 @@
 
 #import "NYTMediaViewController.h"
 #import "NYTPhoto.h"
-#import "NYTScalingImageView.h"
 #import "NYTPhotoNotification.h"
+#import "NYTMediaView.h"
 
 #ifdef ANIMATED_GIF_SUPPORT
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #endif
 
-@interface NYTMediaViewController () <UIScrollViewDelegate>
+@interface NYTMediaViewController ()
 
 @property (nonatomic) id <NYTPhoto> photo;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic) NYTScalingImageView *scalingImageView;
+@property (nonatomic) NYTMediaView *scalingImageView;
 @property (nonatomic) UIView *loadingView;
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
@@ -33,8 +33,6 @@
 #pragma mark - NSObject
 
 - (void)dealloc {
-    _scalingImageView.delegate = nil;
-    
     [_notificationCenter removeObserver:self];
 }
 
@@ -92,13 +90,11 @@
 - (void)commonInitWithPhoto:(id <NYTPhoto>)photo loadingView:(UIView *)loadingView notificationCenter:(NSNotificationCenter *)notificationCenter {
     _photo = photo;
     
-    _scalingImageView = [[NYTScalingImageView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
+    _scalingImageView = [[NYTMediaView alloc] initWithContent:photo.content withPlaceholder:photo.placeholderImage frame:CGRectZero];
     
     if (!photo.content && !photo.placeholderImage) {
         [self setupLoadingView:loadingView];
     }
-    
-    _scalingImageView.delegate = self;
     
     _notificationCenter = notificationCenter;
     
@@ -135,7 +131,7 @@
 }
 
 - (void)setMaximumZoomScale:(CGFloat)maximumZoomScale {
-    self.scalingImageView.maximumZoomScale = maximumZoomScale;
+    // TODO optional
 }
 
 #pragma mark - Gesture Recognizers
