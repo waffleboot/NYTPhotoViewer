@@ -47,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithImageData:(NSData *)imageData frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 
+- (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+
 - (void)updateContent:(id<NYTPhotoContent>)content;
 
 /**

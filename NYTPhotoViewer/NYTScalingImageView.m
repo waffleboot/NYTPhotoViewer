@@ -76,6 +76,14 @@
     return self;
 }
 
+- (instancetype)initWithContent:(id<NYTPhotoContent>)content withPlaceholder:(UIImage *)placeholder frame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInitWithImage:content.image imageData:content.imageData];
+    }
+    return self;
+}
+
 - (void)commonInitWithImage:(UIImage *)image imageData:(NSData *)imageData {
     [self setupInternalImageViewWithImage:image imageData:imageData];
     [self setupImageScrollView];
