@@ -492,7 +492,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
             loadingView = [self.delegate photosViewController:self loadingViewForPhoto:photo];
         }
         
-        NYTPhotoViewController *photoViewController = [[NYTPhotoViewController alloc] initWithPhoto:photo loadingView:loadingView notificationCenter:self.notificationCenter];
+        NYTPhotoViewController *photoViewController = [self createPhotoViewController:photo loadingView:loadingView];
         photoViewController.delegate = self;
         [self.singleTapGestureRecognizer requireGestureRecognizerToFail:photoViewController.doubleTapGestureRecognizer];
 
@@ -505,6 +505,12 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     }
     
     return nil;
+}
+
+- (NYTPhotoViewController *)createPhotoViewController:(id<NYTPhoto>)photo loadingView:(UIView *)loadingView {
+    return [[NYTPhotoViewController alloc] initWithPhoto:photo
+                                             loadingView:loadingView
+                                      notificationCenter:self.notificationCenter];
 }
 
 - (void)didNavigateToPhoto:(id <NYTPhoto>)photo {
